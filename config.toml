@@ -1,0 +1,37 @@
+# The URL the site will be built for
+title = "CJ's Game Site"
+description = "Time for a little relaxing state of game calm."
+base_url = "https://games.cjburkey.com"
+default_language = "en"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+# Use the Anatole Zola theme
+theme = "anatole-zola"
+
+[languages.en.translations]
+about = "About"
+home = "Home"
+tags = "Tags"
+archive = "Archive"
+links = "Links"
+next_page = "Next Page"
+last_page = "Last Page"
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = false
+
+[extra]
+author = "CJ Burkey"
+title = "CJ's Game Site"
+description = "Time for a little relaxing state of game calm."
+
+[extra.social]
+github = "cjburkey01"
+twitter = "cjisburkey"
