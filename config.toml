@@ -19,6 +19,7 @@ home = "Home"
 tags = "Tags"
 archive = "Archive"
 links = "Links"
+date_format = "%Y-%m-%d"
 next_page = "Next Page"
 last_page = "Last Page"
 
