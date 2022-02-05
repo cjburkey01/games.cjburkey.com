@@ -155,8 +155,6 @@ function drawBoardCells() {
                     ctx.lineTo(CROSS_PADDING + start_x, start_y + s - CROSS_PADDING);
                     ctx.stroke();
                     break;
-                default:
-                    break;
             }
         }
     }
@@ -170,7 +168,7 @@ function drawNumbers() {
 
     // Column labels.
     for (let x = 0; x < WIDTH; x ++) {
-        let columnNumbers = getNumbersForCol(x, correctBoard);
+        let columnNumbers = getNumbersForLine(x, correctBoard, true);
         let xAt = innerStart + (x + 0.5) * CELL_SIZE;
         for (let i = 0; i < columnNumbers.length; i ++) {
             let yAt = (i + 0.5) * NUMBER_PAD;
@@ -180,7 +178,7 @@ function drawNumbers() {
 
     // Row labels.
     for (let y = 0; y < WIDTH; y ++) {
-        let columnNumbers = getNumbersForRow(y, correctBoard);
+        let columnNumbers = getNumbersForLine(y, correctBoard, false);
         let yAt = innerStart + (y + 0.5) * CELL_SIZE;
         for (let i = 0; i < columnNumbers.length; i ++) {
             let xAt = (i + 0.5) * NUMBER_PAD;
@@ -229,35 +227,14 @@ function onMouseDown(event) {
     }
 }
 
-function getNumbersForCol(x, correctBoard) {
+// Row=false, Col=true
+function getNumbersForLine(x, correctBoard, rowCol) {
     let numbers = [];
     let current;
     let size = 0;
     for (let y = 0; y < WIDTH; y ++) {
         const prevCurrent = current;
-        current = correctBoard[x * WIDTH + y];
-
-        if (prevCurrent && !current) {
-            numbers.push(size);
-            size = 0;
-        }
-        if (current) {
-            size ++;
-        }
-    }
-    if (current) {
-        numbers.push(size)
-    }
-    return numbers;
-}
-
-function getNumbersForRow(y, correctBoard) {
-    let numbers = [];
-    let current;
-    let size = 0;
-    for (let x = 0; x < WIDTH; x ++) {
-        const prevCurrent = current;
-        current = correctBoard[x * WIDTH + y];
+        current = correctBoard[(rowCol ? (x * WIDTH + y) : (y * WIDTH + x))];
 
         if (prevCurrent && !current) {
             numbers.push(size);
